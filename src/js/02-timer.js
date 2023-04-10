@@ -39,8 +39,8 @@ function countdown() {
 function setTime() {
 	const selectedDate = new Date(datetimePicker.value);
 	const nowDate = new Date();
-	
-	if ( selectedDate - nowDate < 1000) {
+	const dif = selectedDate - nowDate
+	if ( dif < 1000) {
 		clearInterval(intervalId);
 		Notiflix.Report.success('Time is up', 'Countdown is over', 'ok');
 	}

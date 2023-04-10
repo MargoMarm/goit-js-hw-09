@@ -1,0 +1,14 @@
+.timer {
+	display: flex;
+	justify-content: center;
+
+	margin-top: 50px;
+}
+
+.value, .label {
+	font-size: 50px;
+}
+
+.label {
+	margin-right: 20px;
+}
