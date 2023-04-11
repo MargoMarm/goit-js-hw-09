@@ -18,8 +18,10 @@ function onFormSubmit(event) {
 
 	const { delay, step, amount } = form;
 
-	if (delay <= 0 || step < 0 || amount < 0) {
-	Notiflix.Report.warning('Oops...', 'Typed number must be greater than 0', 'Got it!');	}
+	if (delay <= 0 || step <= 0 || amount <= 0) {
+	 Notiflix.Report.warning('Oops...', 'Typed number must be greater than 0', 'Got it!');
+	return;
+	}
 
 	for (let position = 0; position < amount; position+= 1) {
 	
