@@ -6,8 +6,9 @@ const bodyRef = document.body;
 btnStartRef.addEventListener('click', onBtnStartClick);
 btnStopRef.addEventListener('click', onBtnStopClick);
 
+let INTERVAL_ID = null;
 function onBtnStartClick() {
-	  changeColorInterval = setInterval(() => {
+	  INTERVAL_ID = setInterval(() => {
 		 bodyRef.style.backgroundColor = getRandomHexColor();
 	  }, 1000);
 	
@@ -18,7 +19,7 @@ function onBtnStartClick() {
 };
 
 function onBtnStopClick() {
-	clearInterval(changeColorInterval);
+	clearInterval(INTERVAL_ID);
 	btnStartRef.disabled = false;
 	btnStopRef.disabled = true;
 
