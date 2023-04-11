@@ -1,11 +1,10 @@
 import Notiflix from 'notiflix';
 
-
-const btnSubmitRef = document.querySelector('button[type="submit"]');
 const formRef = document.querySelector(".form");
 
-btnSubmitRef.addEventListener('click', onbtnSubmit);
 formRef.addEventListener('input', onFormInput);
+formRef.addEventListener('submit', onFormSubmit);
+
 
 const form = {};
 
@@ -14,14 +13,17 @@ function onFormInput(event) {
 } 
 
 
-function onbtnSubmit(event) {
+function onFormSubmit(event) {
 	event.preventDefault();
 
 	const { delay, step, amount } = form;
 
-	for (let i = 1; i <= amount; i ++) {
+	if (delay <= 0 || step < 0 || amount < 0) {
+	Notiflix.Report.warning('Oops...', 'Typed number must be greater than 0', 'Got it!');	}
+
+	for (let position = 0; position < amount; position+= 1) {
 	
-		createPromise(i, delay + step * i).then(({ position, delay }) => {
+		createPromise(position+1, delay + step * position).then(({ position, delay }) => {
 		Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
   })
 			.catch(({ position, delay }) => {
